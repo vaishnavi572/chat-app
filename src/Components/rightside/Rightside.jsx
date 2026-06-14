@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import './Rightside.css'
 import assets from '../../assets/assets'
 import { logout } from '../../config/firebase'
-import { AppContext } from '../../context/appcontext'
+import { AppContext } from '../../context/Appcontext'
 
 function Rightside() {
   const{chatuser,messages,userdata}=useContext(AppContext)
