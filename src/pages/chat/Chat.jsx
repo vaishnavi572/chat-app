@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import './Chat.css'
+import './chat.css'
 import Leftside from '../../Components/leftside/Leftside'
 import Rightside from '../../Components/rightside/Rightside'
 import Chatbox from '../../Components/chatbox/Chatbox'
