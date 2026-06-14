@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import "./Leftside.css";
+import "./leftside.css";
 import assets from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
 
