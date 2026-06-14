@@ -7,7 +7,7 @@ import Profileupdate from './pages/chat/profileupdate/Profileupdate'
 import { auth,db,signup,login } from './config/firebase'
   import { ToastContainer, toast } from 'react-toastify';
 import { onAuthStateChanged } from 'firebase/auth'
-import { AppContext } from './context/appcontext'
+import { AppContext } from './context/Appcontext'
 
 
 const App = () => {
