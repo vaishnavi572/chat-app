@@ -3,7 +3,7 @@ import './chat.css'
 import Leftside from '../../Components/leftside/Leftside'
 import Rightside from '../../Components/rightside/Rightside'
 import Chatbox from '../../Components/chatbox/Chatbox'
-import { AppContext } from '../../context/appcontext'
+import { AppContext } from '../../context/Appcontext'
 
 function Chat() {
   const {chatdata,userdata}=useContext(AppContext)
