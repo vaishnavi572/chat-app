@@ -1,6 +1,6 @@
 import React from 'react'
 import assets from '../../../assets/assets'
-import './Login.css'
+import './login.css'
 import { useState } from 'react'
 import { signup,login, resetpass } from '../../../config/firebase'
 
