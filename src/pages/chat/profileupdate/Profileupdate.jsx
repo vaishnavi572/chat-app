@@ -7,7 +7,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import upload from '../../../lib/upload'; 
-import { AppContext } from '../../../context/appcontext';
+import { AppContext } from '../../../context/Appcontext';
 
 function Profileupdate() {
   const [image, setImage] = useState(false)
