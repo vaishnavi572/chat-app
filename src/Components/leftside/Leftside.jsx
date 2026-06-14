@@ -14,7 +14,7 @@ import {
 } from "firebase/firestore";
 
 import { db } from "../../config/firebase";
-import { AppContext } from "../../context/appcontext";
+import { AppContext } from "../../context/Appcontext";
 import { toast } from "react-toastify";
 
 function Leftside() {
