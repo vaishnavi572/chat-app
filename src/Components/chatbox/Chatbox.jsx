@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import './Chatbox.css'
+import './chatbox.css'
 import assets from '../../assets/assets'
 import { AppContext } from '../../context/Appcontext'
 import { arrayUnion, doc, onSnapshot, updateDoc,getDoc, serverTimestamp } from 'firebase/firestore'
