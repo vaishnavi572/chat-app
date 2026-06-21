@@ -26,6 +26,7 @@ useEffect(() => {
     <>
     <ToastContainer />
     <Routes>
+      <Route path='/' element={<Login />} />
       <Route path='/login' element={<Login />} />
       <Route path='/chat' element={<Chat />} />
       <Route path='/profileupdate' element={<Profileupdate />} />
