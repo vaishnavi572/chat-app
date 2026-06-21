@@ -104,25 +104,35 @@ function Leftside() {
   };
 
   // ➕ CREATE CHAT
-  const addchat = async (user) => {
-    try {
-      const messageId = getMessageId(userdata.uid, user.uid);
+ const addchat = async (user) => {
+  try {
+    const messageId = getMessageId(userdata.uid, user.uid);
 
-      const messageRef = doc(db, "messages", messageId);
+    const messageRef = doc(db, "messages", messageId);
+    const snap = await getDoc(messageRef);
 
-      const snap = await getDoc(messageRef);
+    if (!snap.exists()) {
+      await setDoc(messageRef, {
+        createdAt: Date.now(),
+        messages: [],
+      });
+    }
 
-      // ✅ Create message document if not exists
-      if (!snap.exists()) {
-        await setDoc(messageRef, {
-          createdAt: Date.now(),
-          messages: [],
-        });
-      }
+    // Check if chat already exists
+    const currentUserChatRef = doc(db, "chats", userdata.uid);
+    const currentUserChatSnap = await getDoc(currentUserChatRef);
 
-      // ✅ Add chat for current user
+    const existingChats = currentUserChatSnap.exists()
+      ? currentUserChatSnap.data().chatsData || []
+      : [];
+
+    const alreadyExists = existingChats.some(
+      (chat) => chat.messageId === messageId
+    );
+
+    if (!alreadyExists) {
       await setDoc(
-        doc(db, "chats", userdata.uid),
+        currentUserChatRef,
         {
           chatsData: arrayUnion({
             messageId,
@@ -134,7 +144,6 @@ function Leftside() {
         { merge: true }
       );
 
-      // ✅ Add chat for other user
       await setDoc(
         doc(db, "chats", user.uid),
         {
@@ -148,22 +157,23 @@ function Leftside() {
         { merge: true }
       );
 
-      // ✅ SET CURRENT CHAT
-      setmessageId(messageId);
-
-      setchatuser({
-        ...user,
-        messageId,
-      });
-
-      setchatvisible(true);
-
       toast.success("Chat created");
-    } catch (error) {
-      console.log(error);
-      toast.error(error.message);
     }
-  };
+
+    setmessageId(messageId);
+
+    setchatuser({
+      userdata: user,
+      messageId,
+    });
+
+    setchatvisible(true);
+
+  } catch (error) {
+    console.log(error);
+    toast.error(error.message);
+  }
+};
 
   return (
     <div className={`ls ${chatvisible ? "hidden" : ""}`}>
