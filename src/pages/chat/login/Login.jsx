@@ -1,6 +1,6 @@
 import React from 'react'
 import assets from '../../../assets/assets'
-import './login.css'
+import './Login.css'
 import { useState } from 'react'
 import { signup,login, resetpass } from '../../../config/firebase'
 
@@ -9,6 +9,7 @@ const Login = () => {
   const[userName,setUsername]=useState('')
   const[email,setEmail]=useState('')
   const[password,setPassword]=useState('')
+  
   const handleSubmit=async (e)=>{
     e.preventDefault();
     if(currentState==='signup'){
@@ -36,7 +37,7 @@ const Login = () => {
         </div>
         <div className="login_forgot">
           {currentState=='signup'?<p className='login-toggle'>Already have an account? <span onClick={()=>setCurrentState('login')}>click here</span></p>:<p className='login-toggle'>create an account <span onClick={()=>setCurrentState('signup')}>click here</span></p>}
-          {currentState=='login'?<p className='login-toggle'>Already have an account? <span onClick={()=>resetpass(email)}>reset here</span></p>:null}
+          {currentState=='login'?<p className='login-toggle'>Forgot Your Paaword? <span onClick={()=>resetpass(email)}>reset here</span></p>:null}
 
         </div>
       </form>
